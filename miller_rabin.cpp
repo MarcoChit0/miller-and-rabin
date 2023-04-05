@@ -17,8 +17,10 @@ int main(int argc, char *argv[]) {
     mpz_t n; mpz_init(n); mpz_set_str(n, s.c_str(), 10);
     mpz_t a; mpz_init(a);
     
-    if (strcmp(argv[1], "--time") == 0){ time_test = true; }
-    if (strcmp(argv[1], "--prob") == 0){ prob_test = true; goto probtest; }
+    if (argc > 1){
+        if (strcmp(argv[1], "--time") == 0){ time_test = true; }
+        if (strcmp(argv[1], "--prob") == 0){ prob_test = true; goto probtest; }
+    }
 
     for (int i = 0; i < NUMRUNS; i++){
         gmp_randstate_t state; gmp_randinit_default(state);
